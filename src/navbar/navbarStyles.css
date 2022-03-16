@@ -1,0 +1,32 @@
+.nav {
+    /* background: #625FD0; */
+    background: #ffffff;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav>ul {
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav>ul>li {
+    list-style: none;
+    margin-left: 30px;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+li :hover{
+     
+    color: white;
+}
