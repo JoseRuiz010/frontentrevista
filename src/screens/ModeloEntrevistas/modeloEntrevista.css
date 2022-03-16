@@ -57,6 +57,10 @@ background: #515962;
     width: 80%;
     margin: auto;
 }
+.w60{
+    width: 60%;
+    margin: auto;
+}
 
 .mt40{
     margin-top: 40px;

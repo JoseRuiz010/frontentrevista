@@ -1,12 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react'
 import {  useNavigate } from 'react-router-dom'
+import { ModalNewModelo } from '../../Modal/ModalNewModelo'
 import { ContextState } from '../../Reducers/ReducerModelo'
 import './modeloEntrevista.css'
 export const ModeloEntrevistas = () => {
     const api = `http://localhost:3000/modeloEntrevista`
+    const apiPreg=`http://localhost:3000/pregunta`
 
     const [loading, setloading] = useState(true)
     const [entrevistasState, setentrevistas] = useState([])
+    const [preguntasState, setPreguntas] = useState([])
     const navigate= useNavigate()
     useEffect(() => {
 
@@ -14,8 +17,11 @@ export const ModeloEntrevistas = () => {
             async function () {
                 setloading(true)
                 const entrevistas = await fetch(api).then(data => data.json())
-                console.log(entrevistas);
+                 
                 setentrevistas(entrevistas)
+                const preguntas = await fetch(apiPreg).then(data => data.json())
+                
+                setPreguntas(preguntas)
                 setloading(false)
             }
         )()
@@ -41,7 +47,12 @@ export const ModeloEntrevistas = () => {
         <div className='modeloEntrevistasContent'>
             <div className='menu'>
                 <button className='btn btp cw mt-2'>Nuevo +</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Launch static backdrop modal
+            </button>
             </div>
+            <ModalNewModelo distpatch={distpatch} preguntas={preguntasState}/>
+
             <div className='content-card'>
                 {
                     entrevistasState.map(e => (

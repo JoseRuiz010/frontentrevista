@@ -4,15 +4,19 @@ const initialState = {
     modelos: [],
     entrevistas: [],
     modeloSeleccionado: {},
-    preguntas: []
+    preguntas: [],
+    newModelo:{
+        title:'',
+        preguntas:[]
+    }
 };
 
 function reducer(state, action) {
     switch (action.type) {
         case 'modeloSeleccionado':
             return{...state, modeloSeleccionado:action.payload};
-        case 'decrement':
-            return { count: state.count - 1 };
+        case 'newModelo':
+            return {...state, newModelo:{title:action.payload.title,preguntas:action.payload.preguntas}}
         default:
             throw new Error();
     }
