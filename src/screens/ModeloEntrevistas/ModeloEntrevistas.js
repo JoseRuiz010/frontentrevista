@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 import {  useNavigate } from 'react-router-dom'
+import { urlApi } from '../../Contantes/ConstantesRoutes'
 import { ModalNewModelo } from '../../Modal/ModalNewModelo'
 import { ContextState } from '../../Reducers/ReducerModelo'
 import './modeloEntrevista.css'
 export const ModeloEntrevistas = () => {
-    const api = `http://localhost:3000/modeloEntrevista`
-    const apiPreg=`http://localhost:3000/pregunta`
-
+     
     const [loading, setloading] = useState(true)
     const [entrevistasState, setentrevistas] = useState([])
     const [preguntasState, setPreguntas] = useState([])
@@ -16,17 +15,17 @@ export const ModeloEntrevistas = () => {
         (
             async function () {
                 setloading(true)
-                const entrevistas = await fetch(api).then(data => data.json())
+                const entrevistas = await fetch(urlApi.entrevistas).then(data => data.json())
                  
                 setentrevistas(entrevistas)
-                const preguntas = await fetch(apiPreg).then(data => data.json())
+                const preguntas = await fetch(urlApi.preguntas).then(data => data.json())
                 
                 setPreguntas(preguntas.map(p=>({...p,select:false})));
                 setloading(false)
             }
         )()
 
-    }, [api])
+    }, [])
 
     const {distpatch}= useContext(ContextState);
      

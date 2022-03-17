@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { urlApi } from '../Contantes/ConstantesRoutes'
 import { ModalNewPregunta } from '../Modal/ModalNewPregunta'
 import { ContextState } from '../Reducers/ReducerModelo'
 import './preguntaScreen.css'
 export const PregunstasScreen = () => {
-
-    const apiPreg = `http://localhost:3000/pregunta`
 
     const [loading, setloading] = useState(true)
 
@@ -15,13 +14,13 @@ export const PregunstasScreen = () => {
         (
             async function () {
                 setloading(true)
-                const preguntas = await fetch(apiPreg).then(data => data.json())
+                const preguntas = await fetch(urlApi.preguntas).then(data => data.json())
                 setPreguntas(preguntas.map(p => ({ ...p, select: false })));
                 setloading(false)
             }
         )()
 
-    }, [apiPreg])
+    }, [])
 
     const { distpatch } = useContext(ContextState);
 

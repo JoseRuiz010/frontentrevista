@@ -8,3 +8,9 @@ export const nameRoute= {
     "/login":"/login", 
 }
 
+
+export const  urlApi={
+   preguntas:`http://localhost:3000/pregunta`,
+   entrevistas:`http://localhost:3000/modeloEntrevista`
+}
+
