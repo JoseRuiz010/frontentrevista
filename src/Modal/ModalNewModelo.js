@@ -1,23 +1,28 @@
 import React, { useState } from 'react'
-
-export const ModalNewModelo = ({ preguntas,distpatch }) => {
+import './modal.css'
+export const ModalNewModelo = ({ preguntas, distpatch, setPreguntas }) => {
     console.log(preguntas);
 
-    const [newmodelo, setNewModelo]= useState({
-        title:'',
-        preguntas:[]
+    const [newmodelo, setNewModelo] = useState({
+        title: '',
+        preguntas: []
     })
 
-    const onchange=(e)=>{
+    const onchange = (e) => {
         e.preventDefault();
-        setNewModelo({...newmodelo, title:e.target.value})
+        setNewModelo({ ...newmodelo, title: e.target.value })
     }
 
-    const onchangeCheck=(e)=>{
-        e.preventDefault();
-        setNewModelo({...newmodelo, preguntas:[...preguntas,e.target.value]})
+    const onchangeCheck = (p) => {
+        const updte = { ...p, select: !p.select }
+        console.log(updte);
+        setPreguntas([...preguntas.map(p => p.id === updte.id ? updte : p)])
     }
-    
+    const finalizar = () => {
+        setNewModelo({ ...newmodelo, preguntas: preguntas.filter(p => p.select === true) })
+        distpatch({ type: 'newModelo', payload: { title: newmodelo.title, preguntas: newmodelo.preguntas } })
+    }
+
 
     return (
         <div>
@@ -32,26 +37,26 @@ export const ModalNewModelo = ({ preguntas,distpatch }) => {
 
                             <div className="mb-3">
                                 <label className="form-label">Nombre</label>
-                                <input onChange={e=>onchange(e)} type="email" className="form-control" id="exampleFormControlInput1" placeholder="Nombre" />
+                                <input onChange={e => onchange(e)} type="email" className="form-control" id="exampleFormControlInput1" placeholder="Nombre" />
                             </div>
-                            
+
 
                             <label className="form-label">Seleccionar Items a evaluar</label>
                             {
                                 preguntas.map((p, i) => (
-                                    <div key={i} class="form-check">
-                                        <input className="form-check-input" name={p.descripcion} type="checkbox" onChange={(e)=>onchangeCheck(e)} value={p.id} id="flexCheckDefault"/>
-                                            <label classNam="form-check-label"  >
-                                                {p.descripcion}
-                                            </label>
+                                    <div key={i}>
+                                        <br />
+                                        <label onClick={() => onchangeCheck(p)} className={`form-check-label ${p.select ? 'select' : ''}`}>{i + 1}-{p.descripcion}</label>
                                     </div>
+
+
                                 ))
                             }
 
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary" onClick={()=>distpatch({type:'newModelo',payload:{title:'Hola',preguntas:[1,2,3]}})}>Understood</button>
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" className="btn btn-primary" onClick={() => finalizar()}>Guardar</button>
                         </div>
                     </div>
                 </div>

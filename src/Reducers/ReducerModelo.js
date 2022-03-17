@@ -8,7 +8,8 @@ const initialState = {
     newModelo:{
         title:'',
         preguntas:[]
-    }
+    },
+    newPregunta:{descripcion:''}
 };
 
 function reducer(state, action) {
@@ -17,6 +18,8 @@ function reducer(state, action) {
             return{...state, modeloSeleccionado:action.payload};
         case 'newModelo':
             return {...state, newModelo:{title:action.payload.title,preguntas:action.payload.preguntas}}
+        case 'newPregunta':
+            return {...state, newPregunta:{descripcion:action.payload.descripcion}}
         default:
             throw new Error();
     }

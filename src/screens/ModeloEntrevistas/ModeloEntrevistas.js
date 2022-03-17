@@ -21,7 +21,7 @@ export const ModeloEntrevistas = () => {
                 setentrevistas(entrevistas)
                 const preguntas = await fetch(apiPreg).then(data => data.json())
                 
-                setPreguntas(preguntas)
+                setPreguntas(preguntas.map(p=>({...p,select:false})));
                 setloading(false)
             }
         )()
@@ -46,12 +46,10 @@ export const ModeloEntrevistas = () => {
     return (
         <div className='modeloEntrevistasContent'>
             <div className='menu'>
-                <button className='btn btp cw mt-2'>Nuevo +</button>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Launch static backdrop modal
-            </button>
+                <button className='btn btp cw mt-2' type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Nuevo +</button>
+              
             </div>
-            <ModalNewModelo distpatch={distpatch} preguntas={preguntasState}/>
+            <ModalNewModelo distpatch={distpatch} setPreguntas={setPreguntas} preguntas={preguntasState}/>
 
             <div className='content-card'>
                 {
