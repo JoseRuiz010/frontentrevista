@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import GlobalContext from '../context/GlobalContext';
 import './modal.css'
-export const ModalNewModelo = ({ preguntas, distpatch, setPreguntas }) => {
-    console.log(preguntas);
-
+export const ModalNewModelo = () => {
+    const { preguntas, GetPreguntas, ChangePregunta, AddModelo } = useContext(GlobalContext);
+    const [loading, setloading] = useState(true)
     const [newmodelo, setNewModelo] = useState({
         title: '',
         preguntas: []
@@ -10,18 +11,29 @@ export const ModalNewModelo = ({ preguntas, distpatch, setPreguntas }) => {
 
     const onchange = (e) => {
         e.preventDefault();
-        setNewModelo({ ...newmodelo, title: e.target.value })
+        setNewModelo({ ...newmodelo, name: e.target.value })
     }
 
     const onchangeCheck = (p) => {
         const updte = { ...p, select: !p.select }
-        console.log(updte);
-        setPreguntas([...preguntas.map(p => p.id === updte.id ? updte : p)])
+        console.log('change', updte);
+        ChangePregunta(updte)
     }
     const finalizar = () => {
         setNewModelo({ ...newmodelo, preguntas: preguntas.filter(p => p.select === true) })
-        distpatch({ type: 'newModelo', payload: { title: newmodelo.title, preguntas: newmodelo.preguntas } })
+        //console.log(newmodelo);
+        AddModelo(newmodelo)
     }
+    useEffect(() => {
+
+        (async function () {
+            setloading(true)
+            await GetPreguntas()
+            setloading(false)
+        })()
+
+
+    }, [])
 
 
     return (

@@ -1,5 +1,5 @@
 import { useReducer } from "react"
-import { addPregunta, getPreguntas } from "../ConsultasApi/ConsultasPreguntas"
+import { addModelo, addPregunta, getModelo, getPreguntas } from "../ConsultasApi/ConsultasPreguntas"
 import GlobalContext from "./GlobalContext"
 import { ReducerGlobal } from "./ReducerGlobal"
 
@@ -35,13 +35,44 @@ export const StateGlobal = ({ children }) => {
             }
         )
     }
+    const ChangePregunta = async (data) => {
+        dispatch(
+            {
+                type: 'CHANGE_PREGUNTA',
+                payload: data
+            }
+        )
+    }
+    const GetModelo = async () => {
+        const modelos = await getModelo();
+        dispatch(
+            {
+                type: 'GET_MODELOS',
+                payload: modelos
+            }
+        )
+    }
+    const AddModelo = async (data) => {
+        const preguntas = await addModelo(data);
+        dispatch(
+            {
+                type: 'ADD_MODELO',
+                payload: data
+            }
+        )
+
+    }
 
     return (
 
         <GlobalContext.Provider value={{
             preguntas: globalState.preguntas,
+            modelos: globalState.modelosEntrevistas,
             GetPreguntas,
-            AddPreguntas
+            AddPreguntas,
+            ChangePregunta,
+            GetModelo,
+            AddModelo
         }}>
             {children}
 

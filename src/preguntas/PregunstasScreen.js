@@ -43,7 +43,7 @@ export const PregunstasScreen = () => {
                     {
                         preguntas.map((e, i) => (
                             <>
-                                <li className="list-group-item  item"><b>{i + 1}</b>-{e.descripcion}</li>
+                                <li key={i} className="list-group-item  item"><b>{i + 1}</b>-{e.descripcion}</li>
 
                             </>
                         ))
