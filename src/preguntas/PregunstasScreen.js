@@ -41,8 +41,11 @@ export const PregunstasScreen = () => {
             <div className='contesnt-Preguntas'>
                 <ul className="db list-group list-group-flush">
                     {
-                        preguntas.map(e => (
-                            <li className="list-group-item  item"><b>{e.id}</b>-{e.descripcion}</li>
+                        preguntas.map((e, i) => (
+                            <>
+                                <li className="list-group-item  item"><b>{i + 1}</b>-{e.descripcion}</li>
+
+                            </>
                         ))
                     }
                 </ul>
