@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
+import { addPregunta, getPreguntas } from '../ConsultasApi/ConsultasPreguntas'
+import { ConstOptionReducer } from '../Contantes/ConstantesRoutes'
 import './modal.css'
 
-export const ModalNewPregunta = ({distpatch}) => {
-    
+export const ModalNewPregunta = ({ distpatch }) => {
+
 
     const [preguntasState, setpreguntasState] = useState({
         title: '',
-       
+
     })
 
     const onchange = (e) => {
@@ -14,8 +16,10 @@ export const ModalNewPregunta = ({distpatch}) => {
         setpreguntasState({ ...preguntasState, title: e.target.value })
     }
     const finalizar = () => {
-       
-       distpatch({ type: 'newPregunta', payload: { descripcion:preguntasState.title} })
+        const data = { descripcion: preguntasState.title }
+        addPregunta(data);
+        distpatch({ type: ConstOptionReducer.newPregunta, payload: { descripcion: preguntasState.title } })
+
     }
 
 
@@ -36,12 +40,12 @@ export const ModalNewPregunta = ({distpatch}) => {
                             </div>
 
 
-                             
+
 
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" className="btn btn-primary" onClick={() => finalizar()}>Guardar</button>
+                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={() => finalizar()}>Guardar</button>
                         </div>
                     </div>
                 </div>

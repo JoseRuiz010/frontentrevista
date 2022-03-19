@@ -1,67 +1,72 @@
-.modeloEntrevistasContent{
+.modeloEntrevistasContent {
     /* box-shadow: 0 0 3px 1px ; */
     width: 100%;
     height: 550px;
     display: flex;
     flex-direction: column;
-     /* border-radius: 15px; */
+    /* border-radius: 15px; */
     align-items: center;
     margin: auto;
-     
+
     background: #e8e8ed;
 }
 
 
-.content-card{
+.content-card {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     width: 90%;
     gap: 10px;
     margin-top: 20px;
-     }
+}
 
-.card{
+.card {
     /* box-shadow: 0 0 5px 0px ; */
     background-color: #ffffff;
     border-radius: 20px;
-    border-top-left-radius:20px ;
+    border-top-left-radius: 20px;
     padding: 10px;
 }
 
-.card:hover{
-    box-shadow: 0 0 10px 0px #625FD0;;
+.card:hover {
+    box-shadow: 0 0 10px 0px #625FD0;
+    ;
 }
- 
 
-.w-80{
+
+.w-80 {
     margin: auto;
     margin-top: 10px;
     margin-bottom: 10px;
     width: 40%;
 }
-.buttons{
+
+.buttons {
     display: flex;
 }
 
-.btp{
-    background-color: #3375f6;
+.btp {
+    background-color: var(--primario);
 }
-.bts{
-background: #515962;
+
+.bts {
+    background: var(--primarioOscuro);
 }
-.cw{
+
+.cw {
     color: white;
 }
 
-.w80{
+.w80 {
     width: 80%;
     margin: auto;
 }
-.w60{
+
+.w60 {
     width: 60%;
     margin: auto;
 }
 
-.mt40{
+.mt40 {
     margin-top: 40px;
 }

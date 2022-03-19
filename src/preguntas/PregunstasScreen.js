@@ -1,28 +1,36 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { urlApi } from '../Contantes/ConstantesRoutes'
+import { getPreguntas } from '../ConsultasApi/ConsultasPreguntas'
+
 import { ModalNewPregunta } from '../Modal/ModalNewPregunta'
 import { ContextState } from '../Reducers/ReducerModelo'
+
 import './preguntaScreen.css'
 export const PregunstasScreen = () => {
 
     const [loading, setloading] = useState(true)
 
     const [preguntasState, setPreguntas] = useState([])
+    const { state, distpatch } = useContext(ContextState);
 
     useEffect(() => {
+        console.log('Buscando...');
 
         (
             async function () {
                 setloading(true)
-                const preguntas = await fetch(urlApi.preguntas).then(data => data.json())
-                setPreguntas(preguntas.map(p => ({ ...p, select: false })));
+                await getPreguntas(distpatch);
                 setloading(false)
             }
         )()
 
     }, [])
+    useEffect(() => {
 
-    const { distpatch } = useContext(ContextState);
+
+
+    }, [])
+
+
 
 
     if (loading) return (<div>Cargando...</div>)
@@ -32,12 +40,12 @@ export const PregunstasScreen = () => {
             <div className='menu'>
                 <button className='btn btp cw mt-2' type="button" data-bs-toggle="modal" data-bs-target="#modalPregunta">Nuevo +</button>
             </div>
-            <ModalNewPregunta distpatch={distpatch}/>
-            <div className='content-card ul'>
-                <ul className="list-group list-group-flush">
+            <ModalNewPregunta distpatch={distpatch} />
+            <div className='contesnt-Preguntas'>
+                <ul className="db list-group list-group-flush">
                     {
-                        preguntasState.map(e => (
-                            <li className="list-group-item "><b>{e.id}</b>-{e.descripcion}</li>
+                        state.preguntas.map(e => (
+                            <li className="list-group-item  item"><b>{e.id}</b>-{e.descripcion}</li>
                         ))
                     }
                 </ul>

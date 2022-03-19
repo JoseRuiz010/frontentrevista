@@ -1,11 +1,12 @@
 .nav {
-    /* background: #625FD0; */
-    background: #ffffff;
+
+    background: var(--primario);
     height: 70px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    color: var(--white);
 }
 
 .nav>ul {
@@ -23,10 +24,11 @@
 
 a {
     text-decoration: none;
-    color: black;
+    color: var(--whiteOscuro);
 }
 
-li :hover{
-     
-    color: white;
+li :hover {
+
+    color: var(--white);
+
 }

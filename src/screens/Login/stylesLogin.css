@@ -6,7 +6,7 @@
      justify-content: center;
      align-items: center;
      margin: auto;
-     margin-top:80px;
+     margin-top: 80px;
      box-shadow: 0 0 4px 1px #625FD0;
      border-radius: 15px;
      min-width: 500px;
@@ -16,7 +16,7 @@
      width: 50%;
 
      text-align: center;
-     
+
      height: 500px;
  }
 
@@ -25,19 +25,19 @@
      margin-top: 60%;
      margin-bottom: auto;
      align-self: center;
-    }
-    
-    .formularioLogin {
-        width: 50%;
-        background: #625FD0;
-        height: 500px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        border-top-right-radius: 15px;
-    }
-    
+ }
+
+ .formularioLogin {
+     width: 50%;
+     background: var(--primario);
+     height: 500px;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     border-top-right-radius: 15px;
+ }
+
  .inp {
      margin-top: 20px;
      padding-left: 10px;
@@ -53,11 +53,12 @@
      border-radius: 5px;
      border: none;
      height: 35px;
-     background: #4f4bc2;
-     color: white;
+     background: var(--primarioOscuro);
+     color: var(--white);
      font-weight: bold;
  }
- .tituloLogin{
+
+ .tituloLogin {
      font-size: 1.5rem;
-     color: white;
+     color: var(--white);
  }

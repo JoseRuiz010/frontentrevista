@@ -46,7 +46,7 @@ export const ModalNewModelo = ({ preguntas, distpatch, setPreguntas }) => {
                                 preguntas.map((p, i) => (
                                     <div key={i}>
                                         <br />
-                                        <label onClick={() => onchangeCheck(p)} className={`form-check-label ${p.select ? 'select' : ''}`}>{i + 1}-{p.descripcion}</label>
+                                        <label onClick={() => onchangeCheck(p)} className={`form-check-label  ${p.select ? 'select' : 'brt'}`}>{i + 1}-{p.descripcion}</label>
                                     </div>
 
 
@@ -56,7 +56,7 @@ export const ModalNewModelo = ({ preguntas, distpatch, setPreguntas }) => {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" className="btn btn-primary" onClick={() => finalizar()}>Guardar</button>
+                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={() => finalizar()}>Guardar</button>
                         </div>
                     </div>
                 </div>

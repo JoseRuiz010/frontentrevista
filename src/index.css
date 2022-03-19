@@ -1,5 +1,13 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+:root {
+  --primario: #625fd0;
+  --primarioOscuro: #221e9e;
+  --white: #ffffff;
+  --whiteOscuro: #a4a4ac;
+  --red: #ff273e
 }
