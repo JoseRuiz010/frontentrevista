@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { addPregunta, getPreguntas } from '../ConsultasApi/ConsultasPreguntas'
 import { ConstOptionReducer } from '../Contantes/ConstantesRoutes'
+import GlobalContext from '../context/GlobalContext'
 import './modal.css'
 
 export const ModalNewPregunta = ({ distpatch }) => {
 
-
+    const { AddPreguntas } = useContext(GlobalContext);
     const [preguntasState, setpreguntasState] = useState({
         title: '',
 
@@ -17,8 +18,9 @@ export const ModalNewPregunta = ({ distpatch }) => {
     }
     const finalizar = () => {
         const data = { descripcion: preguntasState.title }
-        addPregunta(data);
-        distpatch({ type: ConstOptionReducer.newPregunta, payload: { descripcion: preguntasState.title } })
+        //  addPregunta(data);
+        AddPreguntas(data)
+        // distpatch({ type: ConstOptionReducer.newPregunta, payload: { descripcion: preguntasState.title } })
 
     }
 
