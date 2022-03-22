@@ -16,7 +16,7 @@ export const Evaluacion = ({ puntuacion, data }) => {
         setPuntuacion(puntuacion)
     }, [])
 
-    console.log(stateEvaluacion);
+    
     if (stateEvaluacion.respuestas == '') return <div>Cargando..</div>
     return (
         <div className="cuerpo">

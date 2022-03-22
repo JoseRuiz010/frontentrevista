@@ -41,5 +41,16 @@ export const ReducerGlobal = (globalState, action) => {
                     preguntas: action.payload.preguntas.map(p => ({ ...p, select: true }))
                 },
             };
+        case "GET_ENTREVISTADO":
+            return {
+                ...globalState,
+                entrevistado: action.payload,
+            };
+        case "GET_ENTREVISTADOR":
+            return {
+                ...globalState,
+                entrevistador: action.payload,
+            };
+
     }
 }; 

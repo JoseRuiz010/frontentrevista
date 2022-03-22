@@ -1,5 +1,5 @@
 import { useReducer } from "react"
-import { addModelo, addPregunta, getModelo, getPreguntas } from "../ConsultasApi/ConsultasPreguntas"
+import { addModelo, addPregunta, getEntrevistado, getEntrevistador, getModelo, getPreguntas } from "../ConsultasApi/ConsultasPreguntas"
 import GlobalContext from "./GlobalContext"
 import { ReducerGlobal } from "./ReducerGlobal"
 
@@ -11,7 +11,9 @@ export const StateGlobal = ({ children }) => {
         preguntas: [],
         modelosEntrevistas: [],
         entrevistas: [],
-        modeloSeleccionado: {}
+        modeloSeleccionado: {},
+        entrevistado: [],
+        entrevistador: []
     }
 
     const [globalState, dispatch] = useReducer(ReducerGlobal, init)
@@ -63,7 +65,7 @@ export const StateGlobal = ({ children }) => {
         )
     }
     const SeleccionarModelo = async (data) => {
-
+        const preguntas = await addPregunta(data);
         dispatch(
             {
                 type: 'SELECCIONAR_MODELO',
@@ -72,6 +74,27 @@ export const StateGlobal = ({ children }) => {
         )
 
     }
+    const GetEntrevistado = async () => {
+        const entrevistados = await getEntrevistado()
+
+        dispatch(
+            {
+                type: 'GET_ENTREVISTADO',
+                payload: entrevistados
+            }
+        )
+    }
+    const GetEntrevistador = async () => {
+        const entrevistadores = await getEntrevistador()
+
+        dispatch(
+            {
+                type: 'GET_ENTREVISTADOR',
+                payload: entrevistadores
+            }
+        )
+    }
+
 
     return (
 
@@ -79,12 +102,16 @@ export const StateGlobal = ({ children }) => {
             preguntas: globalState.preguntas,
             modelos: globalState.modelosEntrevistas,
             modeloSeleccionado: globalState.modeloSeleccionado,
+            entrevistado: globalState.entrevistado,
+            entrevistador: globalState.entrevistador,
             GetPreguntas,
             AddPreguntas,
             ChangePregunta,
             GetModelo,
             AddModelo,
-            SeleccionarModelo
+            SeleccionarModelo,
+            GetEntrevistado,
+            GetEntrevistador
         }}>
             {children}
 

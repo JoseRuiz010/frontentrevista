@@ -11,7 +11,9 @@ export const nameRoute = {
 
 export const urlApi = {
     preguntas: `http://localhost:3000/pregunta`,
-    entrevistas: `http://localhost:3000/modeloEntrevista`
+    entrevistas: `http://localhost:3000/modeloEntrevista`,
+    entrevistado:`http://localhost:3000/entrevistado`,
+    entrevistador:`http://localhost:3000/entrevistador`
 }
 
 

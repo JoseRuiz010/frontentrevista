@@ -10,11 +10,11 @@ export const PregunstasScreen = () => {
 
     const [loading, setloading] = useState(true)
 
-    const [preguntasState, setPreguntas] = useState([])
+
     const { preguntas, GetPreguntas } = useContext(GlobalContext);
 
     useEffect(() => {
-        console.log('Buscando...');
+
 
         (
             async function () {
@@ -43,7 +43,7 @@ export const PregunstasScreen = () => {
                     {
                         preguntas.map((e, i) => (
                             <>
-                                <li key={i} className="list-group-item  item"><b>{i + 1}</b>-{e.descripcion}</li>
+                                <li key={e + Date.now()} className="list-group-item  item"><b>{i + 1}</b>-{e.descripcion}</li>
 
                             </>
                         ))
