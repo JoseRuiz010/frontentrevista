@@ -2,9 +2,10 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 import { nameRoute } from '../Contantes/ConstantesRoutes'
+import { Entrevistas } from '../entrevista/Entrevistas'
 import { Navbar } from '../navbar/Navbar'
 import { PregunstasScreen } from '../preguntas/PregunstasScreen'
-import { Entrevistas } from '../screens/Entrevistas'
+ 
 import { Login } from '../screens/Login/Login'
 import { DetalleModelo } from '../screens/ModeloEntrevistas/DetalleModelo'
 import { ModeloEntrevistas } from '../screens/ModeloEntrevistas/ModeloEntrevistas'

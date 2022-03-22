@@ -1,0 +1,63 @@
+.entrevistasContent {
+    /* background: rgb(99, 94, 94); */
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.titulo {
+    text-align: center;
+}
+
+.cuerpo {
+    display: flex;
+    flex-direction: column;
+    margin: 30px 0px;
+    border: 2px solid rgba(199, 204, 199, 0.333);
+    border-radius: 10px;
+}
+
+.cuerpo-items {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.descripcion {
+    width: 200px;
+
+}
+
+.puntuacion {
+    display: flex;
+}
+
+.puntuacion-Items {
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    margin: 3px;
+    padding: 5px;
+    background: var(--primarioOscuro);
+
+    border: solid 1px var(--primario);
+    border-radius: 70px
+}
+
+.puntuacion-Items:hover {
+
+    background: var(--primario);
+}
+
+.puntuacion-Items>span {
+    font-weight: bold;
+    font-size: 17px;
+    color: white;
+}
+
+.selectValor {
+
+    background: var(--primario);
+}

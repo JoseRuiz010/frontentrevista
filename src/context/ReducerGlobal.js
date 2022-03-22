@@ -28,7 +28,18 @@ export const ReducerGlobal = (globalState, action) => {
         case "ADD_MODELO":
             return {
                 ...globalState,
-                modelosEntrevistas: [...globalState.modelosEntrevistas, action.payload],
+                modelosEntrevistas: [...globalState.modelosEntrevistas, { name: action.payload.name, createAt: new Date(), preguntas: action.payload.preguntas }],
+            };
+        case "SELECCIONAR_MODELO":
+            return {
+                ...globalState,
+                modeloSeleccionado:
+                {
+                    id: action.payload.id,
+                    name: action.payload.name,
+                    createAt: action.payload.createAt,
+                    preguntas: action.payload.preguntas.map(p => ({ ...p, select: true }))
+                },
             };
     }
 }; 

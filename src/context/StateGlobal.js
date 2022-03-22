@@ -10,7 +10,8 @@ export const StateGlobal = ({ children }) => {
     const init = {
         preguntas: [],
         modelosEntrevistas: [],
-        entrevistas: []
+        entrevistas: [],
+        modeloSeleccionado: {}
     }
 
     const [globalState, dispatch] = useReducer(ReducerGlobal, init)
@@ -60,6 +61,15 @@ export const StateGlobal = ({ children }) => {
                 payload: data
             }
         )
+    }
+    const SeleccionarModelo = async (data) => {
+
+        dispatch(
+            {
+                type: 'SELECCIONAR_MODELO',
+                payload: data
+            }
+        )
 
     }
 
@@ -68,11 +78,13 @@ export const StateGlobal = ({ children }) => {
         <GlobalContext.Provider value={{
             preguntas: globalState.preguntas,
             modelos: globalState.modelosEntrevistas,
+            modeloSeleccionado: globalState.modeloSeleccionado,
             GetPreguntas,
             AddPreguntas,
             ChangePregunta,
             GetModelo,
-            AddModelo
+            AddModelo,
+            SeleccionarModelo
         }}>
             {children}
 

@@ -12,7 +12,7 @@ export const ModeloEntrevistas = () => {
     const [preguntasState, setPreguntas] = useState([])
     const navigate = useNavigate()
 
-    const { modelos, GetModelo } = useContext(GlobalContext);
+    const { modelos, GetModelo, SeleccionarModelo } = useContext(GlobalContext);
     useEffect(() => {
 
         (
@@ -30,13 +30,9 @@ export const ModeloEntrevistas = () => {
 
     if (loading) return (<div>Cargando...</div>)
 
-    const SeleccionarModelo = (e) => {
+    const SelectModelo = (e) => {
 
-        const action = {
-            type: 'modeloSeleccionado',
-            payload: e
-        }
-
+        SeleccionarModelo(e)
         navigate(`/modeloEntrevistas/${e.id}`)
     }
 
@@ -49,15 +45,15 @@ export const ModeloEntrevistas = () => {
 
             <div className='content-card'>
                 {
-                    modelos.map(e => (
+                    modelos.map((e, i) => (
                         <div className="card center" key={e.id} >
                             <ul className="list-group list-group-flush">
-                                <li className="list-group-item"><b>Id:</b>{e.id}</li>
+                                <li className="list-group-item"><b>Id:</b>{i + 1}</li>
                                 <li className="list-group-item"><b>Name:</b> {e.name}</li>
                                 <li className="list-group-item "><b>Creada:</b>{e.createAt}</li>
                             </ul>
                             <div className='buttons'>
-                                <button className='w-80 btp btn cw' onClick={() => SeleccionarModelo(e)}>Ver</button>
+                                <button className='w-80 btp btn cw' onClick={() => SelectModelo(e)}>Ver</button>
                                 <button className='w-80 bts btn cw'>Resuletas</button>
                             </div>
 
